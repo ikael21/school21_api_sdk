@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.metadata['rubygems_mfa_required'] = 'true'
   spec.required_ruby_version = '>= 3.0.0'
   spec.require_paths = ['lib']
-  spec.files = Dir['{bin,lib,man,test,spec}/**/*', 'README*', 'LICENSE*']
+  spec.files = Dir['{bin,lib,test}/**/*', 'README*', 'LICENSE*']
   spec.add_dependency('apimatic_core')
   spec.add_dependency('apimatic_core_interfaces')
   spec.add_dependency('apimatic_faraday_client_adapter')

@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
-require_relative 'school21/version'
+require 'date'
+require 'json'
 
-module School21
-end
+require 'apimatic_core_interfaces'
+require 'apimatic_core'
+require 'apimatic_faraday_client_adapter'
+
+require_relative 'school21/version'
+require_relative 'school21/config'
+require_relative 'school21/client'
