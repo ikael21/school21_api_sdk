@@ -7,6 +7,8 @@ group :test do
   gem 'rake'
   gem 'rubocop'
   gem 'rubocop-rake'
+  gem 'simplecov', require: false
+  gem 'simplecov-cobertura', require: false
 end
 
 gemspec

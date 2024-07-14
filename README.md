@@ -1,5 +1,7 @@
 # School21 API SDK
 
+[![codecov](https://codecov.io/github/ikael21/school21_api_sdk/branch/main/graph/badge.svg?token=O7I31Q7N96)](https://codecov.io/github/ikael21/school21_api_sdk)
+
 TODO: ...
 
 ## Installation

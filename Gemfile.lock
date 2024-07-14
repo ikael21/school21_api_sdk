@@ -28,6 +28,7 @@ GEM
     ast (2.4.2)
     certifi (2018.01.18)
     connection_pool (2.4.1)
+    docile (1.4.0)
     faraday (2.10.0)
       faraday-net_http (>= 2.0, < 3.2)
       logger
@@ -47,10 +48,6 @@ GEM
       net-http-persistent (~> 4.0)
     faraday-retry (2.2.1)
       faraday (~> 2.0)
-    io-console (0.7.2)
-    irb (1.14.0)
-      rdoc (>= 4.0.0)
-      reline (>= 0.4.2)
     json (2.7.2)
     language_server-protocol (3.17.0.3)
     logger (1.6.0)
@@ -76,16 +73,10 @@ GEM
     parser (3.3.4.0)
       ast (~> 2.4.1)
       racc
-    psych (5.1.2)
-      stringio
     racc (1.8.0)
     rainbow (3.1.1)
     rake (13.2.1)
-    rdoc (6.7.0)
-      psych (>= 4.0.0)
     regexp_parser (2.9.2)
-    reline (0.5.9)
-      io-console (~> 0.5)
     rexml (3.3.1)
       strscan
     rubocop (1.65.0)
@@ -104,7 +95,15 @@ GEM
     rubocop-rake (0.6.0)
       rubocop (~> 1.0)
     ruby-progressbar (1.13.0)
-    stringio (3.1.1)
+    simplecov (0.22.0)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-cobertura (2.1.0)
+      rexml
+      simplecov (~> 0.19)
+    simplecov-html (0.12.3)
+    simplecov_json_formatter (0.1.4)
     strscan (3.1.0)
     unicode-display_width (2.5.0)
     uri (0.13.0)
@@ -124,6 +123,8 @@ DEPENDENCIES
   rubocop
   rubocop-rake
   school21_api_sdk!
+  simplecov
+  simplecov-cobertura
 
 BUNDLED WITH
    2.5.14
