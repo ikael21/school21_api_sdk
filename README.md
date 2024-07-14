@@ -1,8 +1,8 @@
 # School21 API SDK
 
+![](https://github.com/ikael21/school21_api_sdk/actions/workflows/test.yml/badge.svg)
 [![codecov](https://codecov.io/github/ikael21/school21_api_sdk/branch/main/graph/badge.svg?token=O7I31Q7N96)](https://codecov.io/github/ikael21/school21_api_sdk)
-
-TODO: ...
+![](https://github.com/ikael21/school21_api_sdk/actions/workflows/rubocop.yml/badge.svg)
 
 ## Installation
 
