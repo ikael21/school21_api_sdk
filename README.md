@@ -1,24 +1,50 @@
 # School21 API SDK
 
-![](https://github.com/ikael21/school21_api_sdk/actions/workflows/test.yml/badge.svg)
+![test](https://github.com/ikael21/school21_api_sdk/actions/workflows/test.yml/badge.svg)
 [![codecov](https://codecov.io/github/ikael21/school21_api_sdk/branch/main/graph/badge.svg?token=O7I31Q7N96)](https://codecov.io/github/ikael21/school21_api_sdk)
-![](https://github.com/ikael21/school21_api_sdk/actions/workflows/rubocop.yml/badge.svg)
+![rubocop](https://github.com/ikael21/school21_api_sdk/actions/workflows/rubocop.yml/badge.svg)
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
-
 Install the gem and add to the application's Gemfile by executing:
 
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+```bash
+bundle add school21_api_sdk
+```
 
 If bundler is not being used to manage dependencies, install the gem by executing:
 
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+```bash
+gem install school21_api_sdk
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+Please check [docs](https://edu.21-school.ru/docs) for more information.
+
+- Require the gem and initialize client object
+
+```ruby
+require 'school21'
+
+login = 'your_login_here'
+password = 'your_password_here'
+
+client = School21::Client.new(login: login, password: password)
+```
+
+- Select the domain specific API that you want to use. This API has all the endpoints that are related to this specific domain. Here's an example of `Participant API` and call to `/participants/:login`
+
+```ruby
+participants_api = client.participants_api
+response = participants_api.participants('ikael@student.21-school.ru')
+
+if response.success?
+  puts response.data
+else
+  # Error handling
+end
+```
 
 ## Development
 
