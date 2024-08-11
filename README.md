@@ -22,7 +22,7 @@ gem install school21_api_sdk
 
 Please check [docs](https://edu.21-school.ru/docs) for more information.
 
-- Require the gem and initialize client object
+- Require the gem and configure client object
 
 ```ruby
 require 'school21'
@@ -30,10 +30,13 @@ require 'school21'
 login = 'your_login_here'
 password = 'your_password_here'
 
-client = School21::Client.new(login: login, password: password)
+client = School21::Client.configure do |config|
+  config.credentials = { login: login, password: password }
+  config.enable_logging = true # false by default
+end
 ```
 
-- Select the domain specific API that you want to use. This API has all the endpoints that are related to this specific domain. Here's an example of `Participant API` and call to `/participants/:login`
+- Select the domain specific API that you want to use. This API has all endpoints related to that domain. Here's an example of `Participant API` and a call to `/participants/:login`
 
 ```ruby
 participants_api = client.participants_api
