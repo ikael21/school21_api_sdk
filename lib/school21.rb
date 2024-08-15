@@ -13,6 +13,8 @@ require_relative 'school21/api/base_api'
 require_relative 'school21/api/participants_api'
 require_relative 'school21/api/auth_api'
 require_relative 'school21/api/projects_api'
+require_relative 'school21/api/campuses_api'
+require_relative 'school21/api/clusters_api'
 
 require_relative 'school21/config/api_logging_config'
 require_relative 'school21/config/client_config'

@@ -15,17 +15,13 @@ module School21
 
     def participants_projects(login, options: {})
       path = "/participants/#{login}/projects"
-      default_options = { limit: 1000, offset: 0 }.merge(options)
-
-      parameters = default_options.map do |key, value|
-        new_parameter(value, key:)
-      end
+      default_options = { limit: 10, offset: 0 }.merge(options)
 
       new_request = new_request_builder(HttpMethod::GET, path, :api_v1)
                     .auth(CoreLibrary::Single.new(SINGLE_AUTH_PARTICIPANT))
 
-      parameters.each do |parameter|
-        new_request.query_param(parameter)
+      default_options.each do |key, value|
+        new_request.query_param(new_parameter(value, key:))
       end
 
       new_api_call_builder

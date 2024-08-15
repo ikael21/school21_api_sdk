@@ -28,18 +28,28 @@ module School21
       initialize_auth!
     end
 
-    def auth_api = @auth_api ||= AuthApi.new(@config)
+    def auth_api
+      @auth_api ||= AuthApi.new(@config)
+    end
 
     def participants_api
       initialize_auth! if @access_token.expired?
-
       ParticipantsApi.new(@config)
     end
 
     def projects_api
       initialize_auth! if @access_token.expired?
-
       ProjectsApi.new(@config)
+    end
+
+    def campuses_api
+      initialize_auth! if @access_token.expired?
+      CampusesApi.new(@config)
+    end
+
+    def clusters_api
+      initialize_auth! if @access_token.expired?
+      ClustersApi.new(@config)
     end
 
     private
