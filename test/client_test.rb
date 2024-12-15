@@ -34,7 +34,7 @@ describe 'Client Test' do
   it 'successfully stubs client auth' do
     stub = stub_token
 
-    valid_init_client
+    valid_init_client.authenticate!
 
     assert_requested(stub)
   end

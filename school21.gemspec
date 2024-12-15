@@ -20,4 +20,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency('apimatic_core_interfaces')
   spec.add_dependency('apimatic_faraday_client_adapter')
   spec.add_dependency('base64')
+  spec.add_dependency('semantic_logger')
 end

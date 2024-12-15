@@ -2,7 +2,7 @@
 
 module School21
   class GlobalConfig < CoreLibrary::GlobalConfiguration
-    attr_accessor :auth_managers, :enable_logging, :credentials
+    attr_accessor :auth_managers, :enable_logging, :credentials, :logger
     attr_writer :client_configuration
 
     def initialize(client_configuration: ClientConfig.new)

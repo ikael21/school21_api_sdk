@@ -32,15 +32,22 @@ password = 'your_password_here'
 
 client = School21::Client.configure do |config|
   config.credentials = { login: login, password: password }
-  config.enable_logging = true # false by default
+
+  # If you want to log client's requests and responses (turned off by default)
+  config.enable_logging = true
 end
+
+# Request access token from the API server.
+# Access token is stored inside client object and reused for API requests.
+# If access token is expired client will automatically request a new one.
+client.authenticate!
 ```
 
 - Select the domain specific API that you want to use. This API has all endpoints related to that domain. Here's an example of `Participant API` and a call to `/participants/:login`
 
 ```ruby
 participants_api = client.participants_api
-response = participants_api.participants('ikael@student.21-school.ru')
+response = participants_api.participant('peer_nickname')
 
 if response.success?
   puts response.data
@@ -57,4 +64,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/ikael21/school21_api_sdk.
+Bug reports and pull requests are welcome on GitHub at <https://github.com/ikael21/school21_api_sdk>.

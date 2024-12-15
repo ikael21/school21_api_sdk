@@ -49,5 +49,18 @@ module School21
                .key(key)
                .value(value)
     end
+
+    def authenticated_request(...)
+      auth_participant = CoreLibrary::Single.new(SINGLE_AUTH_PARTICIPANT)
+
+      new_request_builder(...).auth(auth_participant)
+    end
+
+    def execute_request(new_request)
+      new_api_call_builder
+        .request(new_request)
+        .response(new_response_handler)
+        .execute
+    end
   end
 end

@@ -2,6 +2,7 @@
 
 require 'apimatic_core'
 require 'apimatic_faraday_client_adapter'
+require 'semantic_logger'
 
 require 'active_support/all'
 
