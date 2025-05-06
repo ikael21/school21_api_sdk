@@ -4,6 +4,9 @@
 [![codecov](https://codecov.io/github/ikael21/school21_api_sdk/branch/main/graph/badge.svg?token=O7I31Q7N96)](https://codecov.io/github/ikael21/school21_api_sdk)
 ![rubocop](https://github.com/ikael21/school21_api_sdk/actions/workflows/rubocop.yml/badge.svg)
 
+> [!NOTE]
+> Development is still in progress, implementation may change in future versions.
+
 ## Installation
 
 Install the gem and add to the application's Gemfile by executing:
