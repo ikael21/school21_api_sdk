@@ -2,10 +2,10 @@
 
 module School21
   class ClustersApi < BaseApi
-    def cluster_map(cluster_id, options: {})
-      path = "/clusters/#{cluster_id}/map"
+    def map(cluster_id, options: {})
+      path = ['/clusters/', cluster_id, '/map'].join
       default_options = { limit: 50, offset: 0 }.merge(options)
-      new_request = authenticated_request(HttpMethod::GET, path, :api_v1)
+      new_request = request_with_auth_participant(HttpMethod::GET, path, :api_v1)
 
       default_options.each do |key, value|
         new_request.query_param(new_parameter(value, key:))

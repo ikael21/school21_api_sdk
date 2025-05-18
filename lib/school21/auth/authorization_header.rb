@@ -7,12 +7,9 @@ module School21
     end
 
     def initialize(bearer_auth_credentials)
+      access_token = bearer_auth_credentials.access_token
       auth_params = {}
-
-      @access_token = bearer_auth_credentials.access_token unless
-        bearer_auth_credentials.nil? || bearer_auth_credentials.access_token.nil?
-
-      auth_params['Authorization'] = "Bearer #{@access_token}" unless @access_token.nil?
+      auth_params['Authorization'] = "Bearer #{access_token}"
 
       super(auth_params)
     end

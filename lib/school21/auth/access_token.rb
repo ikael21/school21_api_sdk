@@ -10,7 +10,7 @@ module School21
     end
 
     def expired?
-      Time.now >= @expires_at
+      access_token.nil? || Time.now >= @expires_at
     end
   end
 end

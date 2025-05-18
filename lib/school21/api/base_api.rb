@@ -4,7 +4,7 @@ module School21
   class BaseApi
     include CoreLibrary
 
-    SINGLE_AUTH_PARTICIPANT = :global
+    PLATFORM_AUTH_PARTICIPANT = :platform
 
     def self.base_uri(server)
       case server
@@ -16,6 +16,8 @@ module School21
     end
 
     def self.response_convertor(api_response)
+      return api_response unless api_response.data.present? && api_response.data.is_a?(Hash)
+
       api_response.data.deep_transform_keys! do |key|
         key.underscore.to_sym
       end
@@ -23,12 +25,13 @@ module School21
       api_response
     end
 
-    def initialize(global_configuration)
-      @global_configuration = global_configuration
-      @api_call = ApiCall.new(@global_configuration)
+    def initialize
+      @api_call = ApiCall.new(School21.config)
     end
 
-    def new_api_call_builder = @api_call.new_builder
+    def new_api_call_builder
+      @api_call.new_builder
+    end
 
     def new_response_handler
       ResponseHandler.new
@@ -50,13 +53,15 @@ module School21
                .value(value)
     end
 
-    def authenticated_request(...)
-      auth_participant = CoreLibrary::Single.new(SINGLE_AUTH_PARTICIPANT)
+    def request_with_auth_participant(http_method, path, server)
+      auth_participant = CoreLibrary::Single.new(PLATFORM_AUTH_PARTICIPANT)
 
-      new_request_builder(...).auth(auth_participant)
+      new_request_builder(http_method, path, server).auth(auth_participant)
     end
 
     def execute_request(new_request)
+      Authenticator.call
+
       new_api_call_builder
         .request(new_request)
         .response(new_response_handler)

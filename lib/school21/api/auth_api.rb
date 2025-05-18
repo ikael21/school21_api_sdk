@@ -9,7 +9,10 @@ module School21
                     .form_param(new_parameter('password', key: :grant_type))
                     .form_param(new_parameter('s21-open-api', key: :client_id))
 
-      execute_request(new_request)
+      new_api_call_builder
+        .request(new_request)
+        .response(new_response_handler)
+        .execute
     end
   end
 end

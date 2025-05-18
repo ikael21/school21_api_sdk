@@ -40,23 +40,18 @@ require 'school21'
 login = 'your_login_here'
 password = 'your_password_here'
 
-client = School21::Client.configure do |config|
+School21.configure do |config|
   config.credentials = { login: login, password: password }
 
   # If you want to log client's requests and responses (turned off by default)
   config.enable_logging = true
 end
-
-# Request access token from the API server.
-# Access token is stored inside client object and reused for API requests.
-# If access token is expired client will automatically request a new one.
-client.authenticate!
 ```
 
 - Select the domain specific API that you want to use. This API has all endpoints related to that domain. Here's an example of `Participant API` and a call to `/participants/:login`
 
 ```ruby
-participants_api = client.participants_api
+participants_api = School21.participants_api
 response = participants_api.participant('peer_nickname')
 
 if response.success?

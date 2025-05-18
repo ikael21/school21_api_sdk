@@ -9,6 +9,7 @@ require 'active_support/all'
 require_relative 'school21/auth/access_token'
 require_relative 'school21/auth/authorization_header'
 require_relative 'school21/auth/bearer_auth_credentials'
+require_relative 'school21/auth/authenticator'
 
 require_relative 'school21/api/base_api'
 require_relative 'school21/api/participants_api'
@@ -16,9 +17,41 @@ require_relative 'school21/api/auth_api'
 require_relative 'school21/api/projects_api'
 require_relative 'school21/api/campuses_api'
 require_relative 'school21/api/clusters_api'
+require_relative 'school21/api/graph_api'
 
 require_relative 'school21/config/api_logging_config'
 require_relative 'school21/config/client_config'
 require_relative 'school21/config/global_config'
 
-require_relative 'school21/client'
+module School21
+  class << self
+    def configure
+      yield config
+      config.initialize_logger if config.enable_logging
+      config
+    end
+
+    def config
+      @config ||= GlobalConfig.new.base_uri_executor(BaseApi.method(:base_uri))
+    end
+
+    def reset!
+      @config = nil
+    end
+
+    API_CLASSES = {
+      auth: AuthApi,
+      participants: ParticipantsApi,
+      projects: ProjectsApi,
+      campuses: CampusesApi,
+      clusters: ClustersApi,
+      graph: GraphApi
+    }.freeze
+
+    API_CLASSES.each do |name, klass|
+      define_method("#{name}_api") do
+        klass.new
+      end
+    end
+  end
+end
