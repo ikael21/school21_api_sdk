@@ -7,6 +7,13 @@
 > [!NOTE]
 > Development is still in progress, implementation may change in future versions.
 
+> [!WARNING]
+> **Do not store your login and password as raw string values, use environment variables instead!**
+> Currently platform provides only one way to authorize API calls with `login:password` pair
+> you're using for the school everyday tasks.
+> As soon as other types of authorization will be added (such as using API token), they'll be implemented for this gem as well.
+
+
 ## Installation
 
 Install the gem and add to the application's Gemfile by executing:
