@@ -7,9 +7,8 @@ require 'debug'
 
 require_relative 'support/shared_data'
 
-require_relative 'support/stubs/base_stub'
-require_relative 'support/stubs/auth_stub'
-require_relative 'support/stubs/participants_stub'
+require_relative 'support/stubs/base_stub' # Ensure BaseStub is loaded first
+Dir[File.expand_path('support/stubs/**/*.rb', __dir__)].reject { |f| f.end_with?('base_stub.rb') }.sort.each { |f| require f }
 
 SimpleCov.start
 SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
