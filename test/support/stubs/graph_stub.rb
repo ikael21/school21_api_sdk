@@ -11,7 +11,6 @@ module GraphStub
   end
 
   def stub_graph_fail
-    stub_request(:get, STUBBED_GRAPH_URL)
-      .to_return(status: [500, 'Internal Server Error'])
+    base_stub_fail(:get, STUBBED_GRAPH_URL)
   end
 end

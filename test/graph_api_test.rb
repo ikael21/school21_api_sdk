@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 require 'test_helper'
-require 'support/stubs/graph_stub' # Ensure GraphStub is required
 
 describe 'Graph API Test' do
   include AuthStub
-  include GraphStub # Include the new GraphStub
+  include GraphStub
 
   with_configured_client do
     let(:graph_api_call) do
@@ -29,11 +28,9 @@ describe 'Graph API Test' do
         stub_graph_fail
       ]
 
-      graph_api_call # Call the API
+      graph_api_call
 
       stubs.each { |stub| assert_requested(stub) }
-      # Example: Assert response status code if the BaseApi or client handles it
-      # assert_equal(500, response.status_code) # This depends on actual error handling
     end
   end
 end
