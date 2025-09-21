@@ -12,7 +12,6 @@ module ParticipantsStub
   end
 
   def stub_participant_fail
-    stub_request(:get, STUBBED_PARTICIPANT_URL)
-      .to_return(status: [500, 'Internal Server Error'])
+    base_stub_fail(:get, STUBBED_PARTICIPANT_URL)
   end
 end

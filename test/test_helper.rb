@@ -10,6 +10,7 @@ require_relative 'support/shared_data'
 require_relative 'support/stubs/base_stub'
 require_relative 'support/stubs/auth_stub'
 require_relative 'support/stubs/participants_stub'
+require_relative 'support/stubs/graph_stub'
 
 SimpleCov.start
 SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
