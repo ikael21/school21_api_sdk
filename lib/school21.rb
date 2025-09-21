@@ -39,17 +39,18 @@ module School21
       @config = nil
     end
 
-    API_CLASSES = {
-      auth: AuthApi,
-      participants: ParticipantsApi,
-      projects: ProjectsApi,
-      campuses: CampusesApi,
-      clusters: ClustersApi,
-      graph: GraphApi
-    }.freeze
+    API_CLASSES_MAPPINGS = [
+      AuthApi,
+      ParticipantsApi,
+      ProjectsApi,
+      CampusesApi,
+      ClustersApi,
+      GraphApi
+    ].freeze
 
-    API_CLASSES.each do |name, klass|
-      define_method("#{name}_api") do
+    API_CLASSES_MAPPINGS.each do |klass|
+      method_name = klass.name.underscore.split('/').last.to_sym
+      define_method(method_name) do
         klass.new
       end
     end

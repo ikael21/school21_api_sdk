@@ -9,9 +9,9 @@ module School21
     def self.base_uri(server)
       case server
       when :api_v1
-        'https://edu-api.21-school.ru/services/21-school/api/v1'
+        'https://platform.21-school.ru/services/21-school/api/v1'
       when :auth
-        'https://auth.sberclass.ru/auth/realms/EduPowerKeycloak/protocol/openid-connect'
+        'https://auth.21-school.ru/auth/realms/EduPowerKeycloak/protocol/openid-connect'
       end
     end
 
