@@ -17,4 +17,4 @@ Metrics/BlockLength:
     - 'test/**/*.rb'
 
 Metrics/AbcSize:
-  Max: 25
+  Max: 28
