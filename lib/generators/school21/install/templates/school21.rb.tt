@@ -1,0 +1,12 @@
+# frozen_string_literal: true
+
+require 'school21'
+
+School21.configure do |config|
+  config.credentials = {
+    login: Rails.application.credentials.dig(:school21, :login) || ENV['SCHOOL21_LOGIN'],
+    password: Rails.application.credentials.dig(:school21, :password) || ENV['SCHOOL21_PASSWORD']
+  }
+
+  config.enable_logging = Rails.env.development?
+end
