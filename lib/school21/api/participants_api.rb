@@ -27,5 +27,12 @@ module School21
 
       execute_request(new_request)
     end
+
+    def participant_skills(login)
+      path = ['/participants/', login, '/skills'].join
+      new_request = request_with_auth_participant(HttpMethod::GET, path, :api_v1)
+
+      execute_request(new_request)
+    end
   end
 end
