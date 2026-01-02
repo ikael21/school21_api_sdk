@@ -4,22 +4,28 @@ module School21
   class AccessTokenError < StandardError; end
 
   module Authenticator
+    MUTEX = Mutex.new
+
     def self.call
       return unless School21.config.access_token.expired?
 
-      auth_api_response = School21.auth_api.token(
-        login: School21.config.credentials[:login],
-        password: School21.config.credentials[:password]
-      )
+      MUTEX.synchronize do
+        return unless School21.config.access_token.expired?
 
-      raise AccessTokenError unless auth_api_response.success?
+        auth_api_response = School21.auth_api.token(
+          login: School21.config.credentials[:login],
+          password: School21.config.credentials[:password]
+        )
 
-      access_token = AccessToken.new(*auth_api_response.data.values_at(:access_token, :expires_in))
-      bearer_auth_credentials = BearerAuthCredentials.new(access_token:)
-      auth_header = AuthorizationHeader.new(bearer_auth_credentials)
+        raise AccessTokenError unless auth_api_response.success?
 
-      School21.config.access_token = access_token
-      School21.config.auth_managers[BaseApi::PLATFORM_AUTH_PARTICIPANT] = auth_header
+        access_token = AccessToken.new(*auth_api_response.data.values_at(:access_token, :expires_in))
+        bearer_auth_credentials = BearerAuthCredentials.new(access_token:)
+        auth_header = AuthorizationHeader.new(bearer_auth_credentials)
+
+        School21.config.access_token = access_token
+        School21.config.auth_managers[BaseApi::PLATFORM_AUTH_PARTICIPANT] = auth_header
+      end
     end
   end
 end
