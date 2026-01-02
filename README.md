@@ -13,7 +13,6 @@
 > you're using for the school everyday tasks.
 > As soon as other types of authorization will be added (such as using API token), they'll be implemented for this gem as well.
 
-
 ## Installation
 
 Install the gem and add to the application's Gemfile by executing:
@@ -28,11 +27,17 @@ If bundler is not being used to manage dependencies, install the gem by executin
 gem install school21_api_sdk
 ```
 
-## Usage
+## Setup
 
 Please check [docs](https://edu.21-school.ru/docs) for more information.
 
-- Require the gem and configure client object
+- Rails:
+
+```bash
+rails generate school21:install
+```
+
+- Manual:
 
 ```ruby
 require 'school21'
@@ -47,6 +52,8 @@ School21.configure do |config|
   config.enable_logging = true
 end
 ```
+
+## Usage
 
 - Select the domain specific API that you want to use. This API has all endpoints related to that domain. Here's an example of `Participant API` and a call to `/participants/:login`
 
