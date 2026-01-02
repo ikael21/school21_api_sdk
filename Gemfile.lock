@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    school21_api_sdk (0.6.0)
+    school21_api_sdk (0.7.0)
       activesupport
       apimatic_core
       apimatic_core_interfaces
