@@ -5,9 +5,12 @@ module School21
     attr_reader :access_token
 
     def initialize(access_token:)
-      raise ArgumentError, 'access_token cannot be nil' if access_token.nil?
-
-      @access_token = access_token.access_token
+      case access_token
+      in String
+        @access_token = access_token
+      in AccessToken
+        @access_token = access_token.access_token
+      end
     end
   end
 end
