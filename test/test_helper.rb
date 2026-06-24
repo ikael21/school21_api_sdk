@@ -2,6 +2,15 @@
 
 require 'simplecov'
 require 'simplecov-cobertura'
+
+SimpleCov.command_name 'test'
+SimpleCov.start do
+  add_filter '/test/'
+  add_filter '/coverage/'
+end
+SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
+
+require 'minitest/autorun'
 require 'webmock/minitest'
 require 'debug'
 
@@ -11,14 +20,17 @@ require_relative 'support/stubs/base_stub'
 require_relative 'support/stubs/auth_stub'
 require_relative 'support/stubs/participants_stub'
 require_relative 'support/stubs/graph_stub'
-
-SimpleCov.start
-SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
+require_relative 'support/stubs/projects_stub'
+require_relative 'support/stubs/campuses_stub'
+require_relative 'support/stubs/clusters_stub'
+require_relative 'support/stubs/sales_stub'
+require_relative 'support/stubs/events_stub'
+require_relative 'support/stubs/courses_stub'
+require_relative 'support/stubs/coalitions_stub'
 
 $LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 
 require 'school21'
-require 'minitest/autorun'
 require 'minitest/reporters'
 
 Minitest::Reporters.use! [Minitest::Reporters::SpecReporter.new]

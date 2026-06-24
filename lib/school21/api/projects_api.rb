@@ -11,7 +11,7 @@ module School21
 
     def project_participants(project_id, options: {})
       path = ['/projects/', project_id, '/participants'].join
-      default_options = { limit: 10, offset: 0 }
+      default_options = { limit: 50, offset: 0 }
       new_request = request_with_auth_participant(HttpMethod::GET, path, :api_v1)
 
       options.reverse_merge!(default_options)

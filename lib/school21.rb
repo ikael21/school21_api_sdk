@@ -18,6 +18,10 @@ require_relative 'school21/api/projects_api'
 require_relative 'school21/api/campuses_api'
 require_relative 'school21/api/clusters_api'
 require_relative 'school21/api/graph_api'
+require_relative 'school21/api/sales_api'
+require_relative 'school21/api/events_api'
+require_relative 'school21/api/courses_api'
+require_relative 'school21/api/coalitions_api'
 
 require_relative 'school21/config/api_logging_config'
 require_relative 'school21/config/client_config'
@@ -45,7 +49,11 @@ module School21
       ProjectsApi,
       CampusesApi,
       ClustersApi,
-      GraphApi
+      GraphApi,
+      SalesApi,
+      EventsApi,
+      CoursesApi,
+      CoalitionsApi
     ].freeze
 
     API_CLASSES_MAPPINGS.each do |klass|
